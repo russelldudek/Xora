@@ -61,3 +61,5 @@ jobs:
           git add -A
           git commit -m 'Publish complete Precision Workpiece campaign'
           git push
+
+# Triggered through the contents API so GitHub Actions receives a standard push event.
