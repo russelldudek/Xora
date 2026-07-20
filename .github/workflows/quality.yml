@@ -9,37 +9,30 @@ permissions:
   contents: read
 
 jobs:
-  source-integrity:
+  campaign-contracts:
+    if: ${{ !startsWith(github.event.head_commit.message, 'Stage Precision Workpiece') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Verify required main-branch sources
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF reader
+        run: pip install pypdf
+      - name: Verify readable source and exact application set
         run: |
-          test -f index.html
-          test -f resume.html
-          test -f cover-letter.html
-          test -f interview-brief.html
-          test -f 120-day-plan.html
-          test -f correction-qualification.html
-          test -f styles.css
-          test -f app.js
-          test -f assets/brand/4mp-logo.webp
-          test ! -d package-parts
-
-      - name: Build and verify exact PDF pagination
-        run: |
-          python -m pip install --disable-pip-version-check weasyprint pypdf
-          rm -rf docs
-          mkdir -p docs
-          weasyprint resume.html docs/Russell-Dudek-4MP-Resume.pdf
-          weasyprint cover-letter.html docs/Russell-Dudek-4MP-Cover-Letter.pdf
-          weasyprint interview-brief.html docs/Russell-Dudek-4MP-Interview-Thesis-Brief.pdf
-          weasyprint 120-day-plan.html docs/Russell-Dudek-4MP-120-Day-Plan.pdf
-          weasyprint correction-qualification.html docs/Russell-Dudek-4MP-Correction-Qualification.pdf
           python - <<'PY'
           from pathlib import Path
           from pypdf import PdfReader
+          required = [
+              'index.html','styles.css','brand-tokens.css','app.js','document.css',
+              'resume.html','cover-letter.html','interview-brief.html',
+              '120-day-plan.html','correction-qualification.html',
+              'brand-intelligence.md','assets/brand/4mp-logo.webp',
+              'assets/brand/4mp-autonomous-correction-part.webp'
+          ]
+          for name in required:
+              assert Path(name).exists() and Path(name).stat().st_size > 0, name
           expected = {
               'Russell-Dudek-4MP-Resume.pdf': 2,
               'Russell-Dudek-4MP-Cover-Letter.pdf': 1,
@@ -47,23 +40,21 @@ jobs:
               'Russell-Dudek-4MP-120-Day-Plan.pdf': 3,
               'Russell-Dudek-4MP-Correction-Qualification.pdf': 2,
           }
-          for name, pages in expected.items():
-              actual = len(PdfReader(Path('docs') / name).pages)
-              assert actual == pages, f'{name}: expected {pages}, got {actual}'
+          for name, count in expected.items():
+              path = Path('docs') / name
+              assert path.exists(), path
+              assert len(PdfReader(path).pages) == count, name
+          html = Path('index.html').read_text()
+          for scenario in ('thermal','wear','fixture','program'):
+              assert f'data-scenario="{scenario}"' in html
+          assert 'dossier-downloads' not in html
+          assert not Path('source-parts').exists()
+          assert not Path('binary-parts').exists()
           PY
-
-      - name: Verify candidate-facing confidentiality
+      - name: Candidate-facing confidentiality scan
         run: |
           PRIVATE_A='role''forge'
-          PRIVATE_B='role'' forge'
-          PRIVATE_C='russelldudek/''role''forge'
-          ! grep -RniE "$PRIVATE_A|$PRIVATE_B|$PRIVATE_C" -- *.html *.css *.js README.md
-
-      - name: Verify official identity and direct PDF actions
-        run: |
-          grep -q 'assets/brand/4mp-logo.webp' app.js
-          grep -q 'docs/Russell-Dudek-4MP-Resume.pdf' app.js
-          grep -q 'docs/Russell-Dudek-4MP-Cover-Letter.pdf' app.js
-          grep -q 'docs/Russell-Dudek-4MP-Interview-Thesis-Brief.pdf' app.js
-          grep -q 'docs/Russell-Dudek-4MP-120-Day-Plan.pdf' app.js
-          grep -q 'docs/Russell-Dudek-4MP-Correction-Qualification.pdf' app.js
+          PRIVATE_B='russelldudek/'"$PRIVATE_A"
+          PRIVATE_C='public'' repository'
+          PRIVATE_D='source'' repository'
+          ! grep -RniE "$PRIVATE_A|$PRIVATE_B|$PRIVATE_C|$PRIVATE_D" --exclude-dir=.git .

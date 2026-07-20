@@ -1,32 +1,30 @@
 # Russell Dudek - VP of AI Candidate Vision for 4MP
 
-A public, role-specific candidate campaign for the VP of AI opportunity at 4MP, a Xora portfolio company.
+An independent, role-specific candidate campaign for the VP of AI opportunity at 4MP, a Xora portfolio company.
 
 ## Candidate thesis
 
 **Make every correction explainable, bounded, validated, and reusable.**
 
-The campaign interprets the founding mandate as building the AI and operating architecture that connects manufacturing intent, physical machine state, metrology evidence, physics constraints, corrective authority, validation, and qualified learning.
+The redesigned campaign uses a Precision Workpiece to show how manufacturing intent, physical machine state, residual evidence, physics constraints, human authority, validation, and learning scope must change together before a corrective action is qualified.
 
-## Candidate-facing routes
+## Included artifacts
 
-- `index.html` - candidate vision and interactive Autonomous Correction Kernel
-- `resume.html` - role-aligned printable resume
-- `cover-letter.html` - printable cover letter
-- `interview-brief.html` - interview thesis brief
-- `120-day-plan.html` - entry plan
-- `correction-qualification.html` - Correction Qualification Record
+- Responsive candidate vision website
+- Scenario-driven Precision Workpiece with four representative correction conditions
+- Continuous career-to-capability evidence trace
+- Exactly two-page role-aligned résumé
+- Exactly one-page cover letter
+- Four-page interview thesis brief
+- Three-page 120-day entry plan
+- Two-page Correction Qualification Record
+- Native direct-download PDFs for every printable artifact
+- Committed brand intelligence, tokens, official identity, product image, and quality gates
 
-All printable routes include browser-native Print / Save PDF support. The repository intentionally contains the actual campaign source on `main`; no archive reconstruction or encoded source-package step is required.
+## Design and interaction
 
-## Live campaign
-
-https://russelldudek.github.io/Xora/
-
-## Evidence integrity
-
-Company-specific technical details that are not documented publicly are labeled as hypotheses or illustrative candidate models. The campaign does not claim undisclosed 4MP architecture, CNC ownership, production ML tenure, or invented metrics.
+The site opens with a complete thermal-drift baseline, then allows the visitor to compare tool wear, fixture shift, and program ambiguity. Each selection changes residual geometry, cause, correction locus, authority, proof, learning scope, and disposition. Motion is one-shot and resolves to a stable final state; reduced-motion users receive the same state immediately.
 
 ## Independent status
 
-This is independent candidate work by Russell Dudek. 4MP and Xora have not reviewed, approved, sponsored, or endorsed it.
+This is independent candidate work by Russell Dudek. 4MP and Xora have not reviewed, approved, sponsored, or endorsed it. Official trademarks and public imagery are used solely for nominative identification.
