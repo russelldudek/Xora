@@ -253,7 +253,8 @@ The trace has two synchronized layers:
 Each career record must visibly include:
 
 - employer and dates;
-- role-specific title or contribution label;
+- the exact verified title when a role title is shown;
+- a separate role-relevant contribution label that does not replace or upgrade the title;
 - one concise verified fact;
 - the capability it proves;
 - claim-strength language where needed.
@@ -455,13 +456,13 @@ Use:
 - deliberate page starts and endings;
 - native `Download PDF` actions in web view.
 
-Target pagination remains:
+Required pagination for this campaign:
 
-- interview thesis brief: approximately four pages unless recomposition supports a better consulting-quality length;
-- 120-day plan: approximately three pages;
-- Correction Qualification Record: approximately two pages.
+- interview thesis brief: exactly four pages;
+- 120-day plan: exactly three pages;
+- Correction Qualification Record: exactly two pages.
 
-Any page-count change must improve usability and remain explicitly verified.
+A page-count change requires explicit user approval and a revised specification before implementation is accepted.
 
 ## 12. Technical Architecture
 
@@ -515,7 +516,7 @@ Required:
 - accessible SVG title/description or equivalent text summary;
 - no information conveyed by color alone;
 - contrast meeting WCAG AA at minimum;
-- touch targets of at least 44 px where practical;
+- touch targets of at least 44 × 44 CSS pixels;
 - reduced-motion support;
 - document links and downloads usable by keyboard and assistive technology.
 
@@ -576,7 +577,10 @@ Verify:
 
 - résumé PDF exactly two pages;
 - cover-letter PDF exactly one page;
-- all other PDFs generated and visually reviewed;
+- interview thesis brief exactly four pages;
+- 120-day plan exactly three pages;
+- Correction Qualification Record exactly two pages;
+- all PDFs generated and visually reviewed;
 - no microscopic type;
 - no clipped or split modules;
 - page-one résumé balance passes;
