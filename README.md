@@ -2,6 +2,10 @@
 
 An independent, role-specific candidate campaign for the VP of AI opportunity at 4MP, a Xora portfolio company.
 
+## Live campaign
+
+https://russelldudek.github.io/Xora/
+
 ## Candidate thesis
 
 **Make every correction explainable, bounded, validated, and reusable.**
