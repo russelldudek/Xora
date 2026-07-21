@@ -1,1 +1,21 @@
-:root{--blue:#075eff;--blue2:#003cb8;--ink:#07111f;--ink2:#101d31;--paper:#fff;--fog:#f3f6fb;--steel:#8796aa;--rule:#d7e0eb;--cyan:#15c8c0;--amber:#ffb23f;--coral:#ff665c;--green:#49b982;--display:"Arial Narrow","Roboto Condensed",sans-serif;--body:Arial,"Helvetica Neue",sans-serif;--mono:"Courier New",monospace;--x:clamp(1.15rem,5vw,5.5rem);--y:clamp(4.5rem,8vw,8.5rem);--max:1480px;--r:18px}
+
+:root{
+  --brand-blue:#075eff;
+  --brand-blue-deep:#003eb8;
+  --brand-navy:#071421;
+  --brand-ink:#07111f;
+  --brand-mist:#eef3f9;
+  --brand-paper:#ffffff;
+  --brand-rule:#cbd7e5;
+  --brand-steel:#69809c;
+  --signal-cyan:#18c8c2;
+  --signal-coral:#ff655c;
+  --signal-amber:#f3ad3f;
+  --signal-green:#48ba82;
+  --display:"Aptos Display","Arial Narrow","Roboto Condensed",Arial,sans-serif;
+  --body:"Aptos","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --max:1500px;
+  --gutter:clamp(1.2rem,4.5vw,5.2rem);
+  --section:clamp(5.2rem,9vw,9.5rem);
+}
